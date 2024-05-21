@@ -2,32 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.no-visible-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
 }
 
-@media (prefers-color-scheme: dark) {
+.no-visible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-color: #f2f2f2; /* Off White background for light mode */
+    --text-color: #3f3f46; /* Almost Black text color for light mode */
+    --opposite-background-color: #0a192f;
+    --opposite-text-color: #ffffff;
+    --opposite-primary: #1e90ff;
+    --card: #1e293b; /* Very light grey for card backgrounds */
+    --card-foreground: #1f2937; /* Almost Black text on cards */
+    --popover: #f5f5f5; /* Similar to card for popovers */
+    --popover-foreground: #1f2937;
+    --primary: #7d4cdb; /* Deep Purple for primary buttons/actions */
+    --primary-foreground: #ffffff; /* White text for primary elements */
+    --secondary: #94a3b8; /* Light Purple for secondary buttons/info */
+    --secondary-foreground: #ffffff;
+    --muted: #e0e0e0; /* Very soft grey for muted text */
+    --muted-foreground: #4b5563; /* Dark Gray for muted text */
+    --accent: #fbbf24; /* Bright yellow for accent elements */
+    --accent-foreground: #1f2937; /* Almost Black for text on accent */
+    --destructive: #ef4444; /* Soft Red for destructive actions */
+    --destructive-foreground: #ffffff; /* White for text on destructive */
+    --border: #0a192f; /* Light grey for borders */
+    --input: #fafafa; /* Very light grey for input fields */
+    --ring: #87cefa; /* Light blue for focus rings */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background-color: #0a192f; /* Black background for dark mode */
+    --text-color: #ffffff; /* White text color for dark mode */
+    --opposite-background-color: #f2f2f2;
+    --opposite-text-color: #3f3f46;
+    --opposite-primary: #7d4cdb;
+    --card: #212121; /* Dark grey for card backgrounds */
+    --card-foreground: #ffffff;
+    --popover: #212121;
+    --popover-foreground: #ffffff;
+    --primary: #1e90ff; /* Lighter blue for primary elements in dark mode */
+    --primary-foreground: #000000;
+    --secondary: #37474f; /* Slightly darker blue for secondary elements */
+    --secondary-foreground: #ffffff;
+    --muted: #696969; /* Darker grey for muted text */
+    --muted-foreground: #ffffff;
+    --accent: #fbbf24; /* Consistent bright yellow for accents */
+    --accent-foreground: #000000; /* Dark text on accent elements */
+    --destructive: #dc143c; /* Less bright red for destructive actions */
+    --destructive-foreground: #ffffff;
+    --border: #ffffff; /* Darker grey for borders */
+    --input: #2b2b2b; /* Dark grey for input fields */
+    --ring: #6495ed; /* Consistent light blue for focus rings */
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  background-color: var(--background-color);
+  color: var(--text-color);
+  @apply font-mono leading-loose bg-background text-foreground;
+  /* transition: background-color 1s ease, color 1s ease; */
 }
